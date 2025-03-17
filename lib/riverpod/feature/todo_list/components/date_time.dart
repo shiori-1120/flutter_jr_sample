@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jr_sample/riverpod/constants/app_style.dart';
+import 'package:flutter_jr_sample/constants/app_style.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jr_sample/riverpod/constants/app_style.dart';
+import 'package:flutter_jr_sample/constants/app_style.dart';
 import 'package:gap/gap.dart';
 
 class DateTimeWidget extends StatelessWidget {
