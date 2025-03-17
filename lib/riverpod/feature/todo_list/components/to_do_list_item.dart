@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_sample/category_type/category_type_enum.dart';
 import 'package:flutter_jr_sample/riverpod/feature/todo_list/vm.dart';
-import 'package:flutter_jr_sample/riverpod/model/category_type/category_type_enum.dart';
 import 'package:flutter_jr_sample/riverpod/model/todo/entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';

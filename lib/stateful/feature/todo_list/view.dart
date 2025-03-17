@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jr_sample/riverpod/model/todo/entity.dart';
 
 import 'package:flutter_jr_sample/stateful/feature/todo_list/components/add_new_task_bottom_sheet.dart';
 import 'package:flutter_jr_sample/stateful/feature/todo_list/components/to_do_list_item.dart';
 import 'package:flutter_jr_sample/stateful/logic/repository.dart';
+import 'package:flutter_jr_sample/stateful/model/todo/entity.dart';
 
 import 'package:gap/gap.dart';
 

@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_sample/category_type/category_type_enum.dart';
 import 'package:flutter_jr_sample/riverpod/constants/app_style.dart';
-
-import 'package:flutter_jr_sample/riverpod/model/category_type/category_type_enum.dart';
-import 'package:flutter_jr_sample/riverpod/model/todo/entity.dart';
 import 'package:flutter_jr_sample/stateful/feature/todo_list/components/date_time.dart';
 import 'package:flutter_jr_sample/stateful/feature/todo_list/components/input_field.dart';
 import 'package:flutter_jr_sample/stateful/feature/todo_list/components/todo_type_radio_buttons.dart';
-
+import 'package:flutter_jr_sample/stateful/model/todo/entity.dart';
 import 'package:gap/gap.dart';
 
 class AddNewTaskBottomSheet extends StatefulWidget {

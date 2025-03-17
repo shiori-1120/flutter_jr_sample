@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_jr_sample/riverpod/model/todo/entity.dart';
+import 'package:flutter_jr_sample/stateful/model/todo/entity.dart';
 
 class TodoLogic {
   factory TodoLogic() => _instance;

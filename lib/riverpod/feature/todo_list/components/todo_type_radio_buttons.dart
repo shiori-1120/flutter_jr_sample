@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_jr_sample/riverpod/model/category_type/category_type_enum.dart';
+import 'package:flutter_jr_sample/category_type/category_type_enum.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
