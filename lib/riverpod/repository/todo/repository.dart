@@ -49,6 +49,7 @@ class TodoRepository {
 
   Future<void> addNewTask(Todo todo) async {
     final docRef = await collection.add(todo);
+    await collection.doc(docRef.id).update({'id': docRef.id});
     final data = todo.copyWith(id: docRef.id);
     _ref.read(todoRepoCacheProvider.notifier).update(data.id, data);
   }
