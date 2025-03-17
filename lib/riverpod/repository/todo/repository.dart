@@ -14,12 +14,16 @@ class TodoRepoCache extends _$TodoRepoCache {
   @override
   Map<String, Todo> build() => {};
 
-  void update(String id, Todo schedule) {
-    state = {...state, id: schedule};
+  void update(String id, Todo todo) {
+    state = {...state, id: todo};
   }
 
   void remove(String id) {
     state = {...state}..remove(id);
+  }
+
+  void setAll(List<Todo> todos) {
+    state = {for (final todo in todos) todo.id: todo};
   }
 }
 
@@ -36,22 +40,17 @@ class TodoRepository {
       );
 
   Future<List<Todo>> getTodos() async {
-    final data = [
-      ...await collection
-          .get()
-          .then((value) => value.docs.map((e) => e.data()).toList()),
-    ];
-    for (final item in data) {
-      _ref.read(todoRepoCacheProvider.notifier).update(item.id, item);
-    }
+    final data = await collection
+        .get()
+        .then((value) => value.docs.map((e) => e.data()).toList());
+    _ref.read(todoRepoCacheProvider.notifier).setAll(data);
     return data;
   }
 
-  Future<Todo> addNewTask(Todo todo) async {
+  Future<void> addNewTask(Todo todo) async {
     final docRef = await collection.add(todo);
     final data = todo.copyWith(id: docRef.id);
     _ref.read(todoRepoCacheProvider.notifier).update(data.id, data);
-    return data;
   }
 
   Future<void> deleteTask(String id) async {
@@ -61,9 +60,11 @@ class TodoRepository {
 
   Future<void> updateTask(String id, {required bool isDone}) async {
     await collection.doc(id).update({'isDone': isDone});
-    final cacheData = _ref.read(todoRepoCacheProvider)[id]!;
-    _ref
-        .read(todoRepoCacheProvider.notifier)
-        .update(id, cacheData.copyWith(isDone: isDone));
+    final cacheData = _ref.read(todoRepoCacheProvider)[id];
+    if (cacheData != null) {
+      _ref
+          .read(todoRepoCacheProvider.notifier)
+          .update(id, cacheData.copyWith(isDone: isDone));
+    }
   }
 }

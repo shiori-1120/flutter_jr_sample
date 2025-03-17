@@ -7,7 +7,7 @@ part of 'vm.dart';
 // **************************************************************************
 
 String _$todoListPageViewModelHash() =>
-    r'2d0d28e3f299bc3a90afc9e5de1114e0638690a4';
+    r'5cf471e9344ad03f41e07f0bcbc4e607026db402';
 
 /// See also [TodoListPageViewModel].
 @ProviderFor(TodoListPageViewModel)

@@ -22,7 +22,7 @@ final todoRepoProvider = AutoDisposeProvider<TodoRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef TodoRepoRef = AutoDisposeProviderRef<TodoRepository>;
-String _$todoRepoCacheHash() => r'5dfb4037a3e36c49e8d44630dc907debfa23a1e1';
+String _$todoRepoCacheHash() => r'0f46c17dc0f039759bf9b0435a740b8ec712d437';
 
 /// See also [TodoRepoCache].
 @ProviderFor(TodoRepoCache)
