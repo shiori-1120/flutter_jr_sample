@@ -1,25 +1,20 @@
 {
-    // IntelliSense を使用して利用可能な属性を学べます。
-    // 既存の属性の説明をホバーして表示します。
-    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    // launch.jsonの設定の参考: https://code.visualstudio.com/docs/editor/debugging-configuration
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_jr_sample",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "flutter_jr_sample (profile mode)",
+            "name": "flutter_jr_sample (riverpod)",
+            "program": "lib/main_riverpod.dart",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "debug"
         },
         {
-            "name": "flutter_jr_sample (release mode)",
+            "name": "flutter_jr_sample (stateful)",
+            "program": "lib/main_stateful.dart",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "debug"
         }
     ]
 }
