@@ -11,8 +11,6 @@ import 'package:flutter_jr_sample/riverpod/model/todo/entity.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final _formKey = GlobalKey<FormState>();
-
 class AddNewTaskBottomSheet extends HookConsumerWidget {
   const AddNewTaskBottomSheet({
     super.key,
@@ -20,6 +18,8 @@ class AddNewTaskBottomSheet extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final formKey = GlobalKey<FormState>();
+
     /// タイトル入力用のコントローラー
     final titleController = useTextEditingController();
 
@@ -68,7 +68,7 @@ class AddNewTaskBottomSheet extends HookConsumerWidget {
             ),
             const Gap(6),
             Form(
-              key: _formKey,
+              key: formKey,
               child: InputField(
                 maxLines: 1,
                 hintText: 'Add Task Name',
@@ -188,7 +188,7 @@ class AddNewTaskBottomSheet extends HookConsumerWidget {
                     ),
                     onPressed: () async {
                       /// バリデーション実施
-                      if (!_formKey.currentState!.validate()) {
+                      if (!formKey.currentState!.validate()) {
                         return;
                       }
 
