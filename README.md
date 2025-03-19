@@ -26,6 +26,7 @@ TODO アプリが
 ### ボトムシート
 TODO の新規作成を行うことができます。
 TODO は、タイトル、説明、カテゴリー、締切日時で構成されています。
+
 <img src="https://github.com/user-attachments/assets/4c8e8bb7-c7de-44f9-bff6-0e9df7069e8a" width="200px" /> 
 
 ## 使い方
