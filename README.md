@@ -4,8 +4,8 @@
 ## 概要
 Flutter Jr. ハッカソンの参考用リポジトリです。
 TODO アプリが
-- StatefulWidget を使った実装 (``lib/riverpod/``)
-- Riverpod を使った実装 (``lib/stateful/``)
+- StatefulWidget を使った実装 (``lib/stateful/``)
+- Riverpod を使った実装 (``lib/riverpod/``)
 の2パターンで作成されています。
 
 ## アプリの内容
