@@ -3,18 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_jr_sample/category_type/category_type_enum.dart';
 import 'package:flutter_jr_sample/constants/app_style.dart';
-import 'package:flutter_jr_sample/riverpod/feature/todo_list/components/date_time.dart';
-import 'package:flutter_jr_sample/riverpod/feature/todo_list/components/input_field.dart';
-import 'package:flutter_jr_sample/riverpod/feature/todo_list/components/todo_type_radio_buttons.dart';
+import 'package:flutter_jr_sample/practice_riverpod/feature/todo_list/components/date_time.dart';
+import 'package:flutter_jr_sample/practice_riverpod/feature/todo_list/components/input_field.dart';
+import 'package:flutter_jr_sample/practice_riverpod/feature/todo_list/components/todo_type_radio_buttons.dart';
+import 'package:flutter_jr_sample/practice_riverpod/feature/todo_list/todo_list_provider.dart';
+import 'package:flutter_jr_sample/practice_riverpod/model/todo/entity.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:uuid/uuid.dart';
 
-class AddNewTaskBottomSheet extends HookWidget {
+class AddNewTaskBottomSheet extends HookConsumerWidget {
   const AddNewTaskBottomSheet({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final formKey = GlobalKey<FormState>();
 
     /// タイトル入力用のコントローラー
@@ -189,7 +193,19 @@ class AddNewTaskBottomSheet extends HookWidget {
                         return;
                       }
 
+                      final newTodo = Todo(
+                        id: const Uuid().v4(),
+                        title: titleController.text.trim(),
+                        description: descriptionController.text.trim(),
+                        category: selectedCategory.value,
+                        isDone: false,
+                        limitAt: limitedAt.value,
+                      );
+
                       // TODO: タスクの作成処理を実装
+                      await ref
+                          .read(todoListProvider.notifier)
+                          .addTodos(newTodo);
 
                       titleController.clear();
                       descriptionController.clear();

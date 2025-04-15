@@ -1,32 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jr_sample/riverpod/feature/todo_list/components/add_new_task_bottom_sheet.dart';
-import 'package:flutter_jr_sample/riverpod/feature/todo_list/components/to_do_list_item.dart';
-import 'package:flutter_jr_sample/riverpod/model/todo/entity.dart';
+import 'package:flutter_jr_sample/practice_riverpod/feature/todo_list/components/add_new_task_bottom_sheet.dart';
+import 'package:flutter_jr_sample/practice_riverpod/feature/todo_list/components/to_do_list_item.dart';
+import 'package:flutter_jr_sample/practice_riverpod/feature/todo_list/todo_list_provider.dart';
+import 'package:flutter_jr_sample/practice_riverpod/model/todo/entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final todos = [
-      Todo(
-        id: '1',
-        title: 'Todo 1',
-        description: 'Description 1',
-        category: 'Category 1',
-        isDone: false,
-        limitAt: DateTime.now(),
-      ),
-      Todo(
-        id: '2',
-        title: 'Todo 2',
-        description: 'Description 2',
-        category: 'Category 2',
-        isDone: false,
-        limitAt: DateTime.now(),
-      ),
-    ];
+  Widget build(BuildContext context, WidgetRef ref) {
+    final todos = ref.watch(todoListProvider);
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       body: SafeArea(
@@ -80,13 +65,17 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 const Gap(20),
-                ListView.builder(
-                  itemCount: todos.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => TodoListItem(
-                    todo: todos[index],
-                  ),
-                ),
+                switch (todos) {
+                  AsyncData(:final value) => ListView.builder(
+                      itemCount: value.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => TodoListItem(
+                        todo: value[index],
+                      ),
+                    ),
+                  AsyncError() => const Text('error'),
+                  _ => const CircularProgressIndicator(),
+                }
               ],
             ),
           ),
